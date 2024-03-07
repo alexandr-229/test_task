@@ -1,6 +1,6 @@
 export interface Product {
 	id: number;
-	brand: string;
+	brand: string | null;
 	name: string;
 	price: string;
 	price_sign: string;
@@ -10,8 +10,8 @@ export interface Product {
 	website_link: string;
 	description: string;
 	rating: number | null;
-	category: string;
-	product_type: string;
+	category: string | null;
+	product_type: string | null;
 	tag_list: string[];
 	created_at: string;
 	updated_at: string;

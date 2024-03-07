@@ -23,10 +23,14 @@ export const useGetProducts = () => {
 			return result;
 		} else {
 			const groupProducts = (response || []).reduce<Record<string, Product[]>>((acc, product) => {
-				if (acc[product[groupBy]]) {
-					acc[product[groupBy]].push(product);
+				if (!product[groupBy]) {
+					return acc;
+				}
+
+				if (acc[product[groupBy] as string]) {
+					acc[product[groupBy] as string].push(product);
 				} else {
-					acc[product[groupBy]] = [product];
+					acc[product[groupBy] as string] = [product];
 				}
 
 				return acc;

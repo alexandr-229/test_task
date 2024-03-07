@@ -3,6 +3,7 @@ import { ProductsProps } from '../ui/products/products.props';
 import { ProductImage } from '../ui/product-image/product-image';
 import { ProductRating } from '../ui/product-rating/product-rating';
 import { ProductColors } from '../ui/product-colors/product-colors';
+import { formatText } from '../helpers/text';
 
 export const useTableOptions = ({ data }: Pick<ProductsProps, 'data'>) => {
 	const dataSource = useMemo(() => {
@@ -10,10 +11,10 @@ export const useTableOptions = ({ data }: Pick<ProductsProps, 'data'>) => {
 			key: product.id.toString(),
 			name: product.name,
 			image: product.image_link,
-			category: product.category,
-			brand: product.brand,
+			category: formatText(product.category || ''),
+			brand: formatText(product.brand || ''),
 			price: `${product.price_sign || ''}${product.price}`,
-			product_type: product.product_type,
+			product_type: formatText(product.product_type || ''),
 			colors: product.product_colors,
 			rating: product.rating || 0,
 		}));
