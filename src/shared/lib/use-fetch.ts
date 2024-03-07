@@ -19,7 +19,7 @@ export const useFetch = <T>(url: string, method: string, options: Partial<Option
 		try {
 			const cacheKey = `${url}_${method}`;
 
-			console.log(process)
+			console.log(process.env)
 
 			if (options.cacheResponse && cacheData.get(cacheKey)) {
 				setData(cacheData.get(cacheKey));
