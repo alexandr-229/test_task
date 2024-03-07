@@ -4,6 +4,7 @@ import { usePagination } from '../hooks/use-pagination';
 import { Product } from '../types/product';
 import { useFilter } from '../hooks/use-filters';
 import { GroupBy } from '../types/filters';
+import { sortProducts } from '../helpers/products';
 
 const { setTotal } = usePagination.getStore();
 
@@ -22,7 +23,7 @@ const getUrl = (selectedTags: string[]) => {
 };
 
 export const useGetProducts = () => {
-	const { groupBy, tags: selectedTags, brands: selectedBrands } = useFilter();
+	const { groupBy, tags: selectedTags, brands: selectedBrands, sortBy, sort } = useFilter();
 	const { data: response, loading } = useFetch<Product[]>(getUrl(selectedTags), 'GET', { cacheResponse: true });
 	const { data: brandsResponse } = useFetch<Product[]>('/api/v1/products.json', 'GET', { cacheResponse: true });
 	const { page, count } = usePagination();
@@ -32,7 +33,8 @@ export const useGetProducts = () => {
 		const filteredProducts = (response || []).filter((product) => selectedBrands.length ? selectedBrands.includes(product.brand || '') : true)
 
 		if (groupBy === GroupBy.NONE) {
-			const result = filteredProducts.slice((page - 1) * count, (page) * count);
+			const sortedProducts = filteredProducts.sort((a, b) => sortProducts(a, b, sortBy, sort))
+			const result = sortedProducts.slice((page - 1) * count, (page) * count);
 
 			setTotal(filteredProducts.length);
 			
@@ -58,7 +60,7 @@ export const useGetProducts = () => {
 
 			return products;
 		}
-	}, [response, page, count, groupBy, selectedTags, selectedBrands]);
+	}, [response, page, count, groupBy, selectedTags, selectedBrands, sortBy, sort]);
 
 	const brands = Array.from(new Set((brandsResponse || []).map((product) => product.brand).filter(Boolean) as string[]))
 	const tags = Array.from(new Set((response || []).flatMap((product) => product.tag_list)))

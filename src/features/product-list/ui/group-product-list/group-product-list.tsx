@@ -21,7 +21,7 @@ export const GroupProductList = ({ data, className, style, ...props }: GroupProd
 			}}
 			{...props}
 		>
-			<Products data={data} pagination={false} />
+			<Products data={data} pagination={false} customSort />
 		</div>
 	);
 };

@@ -8,11 +8,9 @@ import { useEffect } from 'react';
 
 const { setCount, setPage } = usePagination.getStore();
 
-export const Products = ({ data, pagination = true }: ProductsProps) => {
-	console.log(data);
-	const { columns, dataSource } = useTableOptions({ data });
+export const Products = ({ data, customSort = false, pagination = true }: ProductsProps) => {
+	const { columns, dataSource } = useTableOptions({ data, customSort });
 	const { total, count, page } = usePagination();
-
 
 	useEffect(() => {
 		if (!pagination) {
