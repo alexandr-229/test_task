@@ -18,7 +18,7 @@ export const ProductList = ({ className, ...props }: MainProps) => {
 				{Array.isArray(data) ? (
 					<Products data={data} />
 				) : (
-					<GroupProducts data={data.products} total={data.total} />
+					<GroupProducts data={data} />
 				)}
 			</Loader>
 		</div>

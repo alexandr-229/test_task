@@ -8,9 +8,9 @@ import { useFilter } from '../../hooks/use-filters';
 
 const { setCount, setPage } = usePagination.getStore();
 
-export const GroupProducts = ({ data, total }: GroupProductsProps) => {
+export const GroupProducts = ({ data }: GroupProductsProps) => {
 	const { columns, dataSource, expandedRowRender} = usGroupTableOptions({ data });
-	const { page, count } = usePagination();
+	const { page, count, total } = usePagination();
 	const { groupBy } = useFilter();
 
 	useEffect(() => {
