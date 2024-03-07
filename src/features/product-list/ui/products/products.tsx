@@ -34,6 +34,7 @@ export const Products = ({ data, pagination = true }: ProductsProps) => {
 
 	return (
 		<Table
+			showSorterTooltip
 			columns={columns}
 			dataSource={dataSource}
 			rowClassName={styles.row}
