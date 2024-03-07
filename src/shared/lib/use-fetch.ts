@@ -19,8 +19,6 @@ export const useFetch = <T>(url: string, method: string, options: Partial<Option
 		try {
 			const cacheKey = `${url}_${method}`;
 
-			console.log(process.env)
-
 			if (options.cacheResponse && cacheData.get(cacheKey)) {
 				setData(cacheData.get(cacheKey));
 				return;
@@ -29,7 +27,7 @@ export const useFetch = <T>(url: string, method: string, options: Partial<Option
 			setLoading(true);
 			setError(false);
 
-			const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}${url}`, { method });
+			const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}${url}`, { method, mode: 'no-cors' });
 
 			if (response.status >= 400) {
 				throw new Error();
