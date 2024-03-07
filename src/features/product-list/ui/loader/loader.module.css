@@ -1,0 +1,14 @@
+.wrapper {
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+.containerSkeleton {
+	width: 100%;
+	display: block;
+}
+  
+.skeleton {
+	height: 80px;
+	display: block;
+}
