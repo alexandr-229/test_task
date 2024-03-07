@@ -23,8 +23,8 @@ const getUrl = (selectedTags: string[]) => {
 
 export const useGetProducts = () => {
 	const { groupBy, tags: selectedTags, brands: selectedBrands } = useFilter();
-	const { data: response, loading } = useFetch<Product[]>(getUrl(selectedTags), 'GET');
-	const { data: brandsResponse } = useFetch<Product[]>('/api/v1/products.json', 'GET');
+	const { data: response, loading } = useFetch<Product[]>(getUrl(selectedTags), 'GET', { cacheResponse: true });
+	const { data: brandsResponse } = useFetch<Product[]>('/api/v1/products.json', 'GET', { cacheResponse: true });
 	const { page, count } = usePagination();
 
 	const data = useMemo(() => {
