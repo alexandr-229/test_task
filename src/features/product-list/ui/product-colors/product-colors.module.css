@@ -1,0 +1,41 @@
+.wrapper {
+	width: 200px;
+	height: 100px;
+	column-gap: 10px;
+	transition: 0.3s all;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: repeat(4, 25px);
+	overflow: hidden;
+	cursor: help;
+}
+
+.wrapper:hover {
+	grid-template-columns: 1fr 1fr;
+	position: relative;
+	background-color: #fafafa;
+	z-index: 100;
+	width: 385px;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.color {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+}
+
+.colorName {
+	margin: 0;
+	width: 150px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.colorCircle {
+	width: 15px;
+	height: 15px;
+	border-radius: 50%;
+}
