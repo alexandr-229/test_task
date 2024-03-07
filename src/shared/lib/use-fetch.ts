@@ -27,7 +27,7 @@ export const useFetch = <T>(url: string, method: string, options: Partial<Option
 			setLoading(true);
 			setError(false);
 
-			const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}${url}`, { method, mode: 'no-cors' });
+			const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}${url}`, { method });
 
 			if (response.status >= 400) {
 				throw new Error();
