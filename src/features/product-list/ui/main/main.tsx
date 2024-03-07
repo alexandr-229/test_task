@@ -9,11 +9,11 @@ import { Filters } from '../filters/filters';
 import { GroupProducts } from '../group-products/group-products';
 
 export const ProductList = ({ className, ...props }: MainProps) => {
-	const { data, loading } = useGetProducts();
+	const { data, brands, tags, loading } = useGetProducts();
 
 	return (
 		<div className={clsx(styles.wrapper, className)} {...props}>
-			<Filters className={styles.filters} />
+			<Filters className={styles.filters} brands={brands} tags={tags} />
 			<Loader loading={loading}>
 				{Array.isArray(data) ? (
 					<Products data={data} />

@@ -44,9 +44,14 @@ export const useGetProducts = () => {
 			};
 		}
 	}, [response, page, count, groupBy]);
+
+	const brands = Array.from(new Set((response || []).map((product) => product.brand).filter(Boolean) as string[]))
+	const tags = Array.from(new Set((response || []).flatMap((product) => product.tag_list)))
 	
 	return {
+		tags,
 		data,
+		brands,
 		loading,
 	};
 };
