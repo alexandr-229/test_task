@@ -13,7 +13,7 @@ export const ProductList = ({ className, ...props }: MainProps) => {
 
 	return (
 		<div className={clsx(styles.wrapper, className)} {...props}>
-			<Filters className={styles.filters} brands={brands} tags={tags} />
+			<Filters className={styles.filters} brands={brands} tags={tags} loading={loading} />
 			<Loader loading={loading}>
 				{Array.isArray(data) ? (
 					<Products data={data} />

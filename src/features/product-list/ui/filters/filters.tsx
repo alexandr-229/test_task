@@ -7,10 +7,11 @@ import { useFilter } from '../../hooks/use-filters';
 import { GroupBy } from '../../types/filters';
 import { FiltersProps } from './filters.props';
 import { formatText } from '../../helpers/text';
+import { PdfGenerator } from '../pdf-generator/pdf-generator';
 
 const { setGroupBy, setBrands, setTags } = useFilter.getStore();
 
-export const Filters = ({ className, brands, tags, ...props }: FiltersProps) => {
+export const Filters = ({ className, brands, tags, loading, ...props }: FiltersProps) => {
 	const { groupBy } = useFilter();
 
 	const displayBrands = brands.map((brand) => ({ label: formatText(brand), value: brand }));
@@ -52,6 +53,7 @@ export const Filters = ({ className, brands, tags, ...props }: FiltersProps) => 
 				options={displayTags}
 				className={styles.select}
 			/>
+			<PdfGenerator disabled={loading} />
 		</div>
 	);
 };

@@ -32,6 +32,7 @@ export const Products = ({ data, customSort = false, pagination = true }: Produc
 
 	return (
 		<Table
+			id='table'
 			showSorterTooltip
 			columns={columns}
 			dataSource={dataSource}
