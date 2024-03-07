@@ -1,6 +1,6 @@
 export enum GroupBy {
 	NONE = 'none',
-	TYPE = 'type',
+	TYPE = 'product_type',
 	BRAND = 'brand',
 	CATEGORY = 'category',
 }
